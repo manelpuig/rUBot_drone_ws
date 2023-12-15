@@ -70,24 +70,7 @@ rostopic pub /drone/land std_msgs/Empty "{}"
 
 Fortunately, there is a very good ROS program that allows us to control the movement of the robot by just using the keyboard.
 
-For that purpose you have to:
-
-- install "teleop-twirst-keyboard" package or clone this package in your workspace:
-
-```shell
-apt install ros-noetic-teleop-twist-keyboard
-```
-
-- Now, you can execute the program by running the next command:
-
-```shell
-rosrun teleop_twist_keyboard teleop_twist_keyboard.py
-```
-**Custom Teleop**
-
-You can now control the drone using your keyboard, as you did in the demo unit. It's quite annoying to have to manually take off and land the drone each time you want to teleoperate it, don't you think? Let's modify it then!
-
-- We have created the "custom_teleop" package in src folder. We have modified some things in the "teleop_twist_keyboard.py" code.
+- We have created the "teleop_twist_keyboard.py" code.
 - At the beginning of the file, import the Empty message. (line 6)
 - Next, create two new Publishers, one for landing and the other one for taking off. And create an instance of the Empty message. (lines 84-85)
 - Finally, just add two conditions for the new keys. (lines 113-115)
@@ -95,8 +78,8 @@ You can now control the drone using your keyboard, as you did in the demo unit. 
 Great! So, now you can run the script again and try the new keys you have set up for taking off and landing the drone!
 
 ```shell
-roslaunch ar_drone simple.launch
-rosrun custom_teleop teleop_twist_keyboard.py
+roslaunch drone_construct main.launch
+rosrun drone_control teleop_twist_keyboard.py
 ```
 
 You can perform "takeoff" with key "1" and "landing" with key "2"
@@ -148,7 +131,7 @@ For that, you will have to do the following:
 Test the square movement:
 
 ```shell
-roslaunch ar_drone simple.launch
+roslaunch drone_construct main.launch
 rosrun drone_control square_move.py
 ```
 

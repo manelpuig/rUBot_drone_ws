@@ -21,7 +21,7 @@ When you reate the workspace from scratch, the first time you have to download t
 
 Let’s then download the required git repositories which contain the simulation:
 ```shell
-cd ~/rUBot_parrot_ws/src
+cd ~/rUBot_drone_ws/src
 git clone --branch noetic https://bitbucket.org/theconstructcore/parrot_ardrone.git
 git clone https://bitbucket.org/theconstructcore/spawn_robot_tools.git
 ```
@@ -42,7 +42,7 @@ sudo apt-get install libignition-math4-dev -y
 
 It may happen that when compiling the package, catkin_make can’t find the ignition library, so we need to export the CXXFLAGS accordingly. In my local computer, the ignition library is found at /usr/include/ignition/math4, so to compile we use the following commands:
 ```shell
-cd /home/rUBot_parrot_ws
+cd /home/rUBot_drone_ws
 export CXXFLAGS=-isystem\ /usr/include/ignition/math4
 source /opt/ros/noetic/setup.bash
 catkin_make

@@ -7,7 +7,7 @@ https://www.youtube.com/watch?v=uMiXP_AwhmM
 
 The detailed install instructions are:
 ```shell
-cd rUBot_parrot_ws
+cd rUBot_drone_ws
 git clone https://github.com/anqixu/TelloPy.git
 cd TelloPy
 sudo apt install python3-pip
@@ -50,5 +50,6 @@ rostopic pub /tello/land std_msgs/Empty "{}
 ```
 
 To see the camera:
-
-$ rosrun rqt_image_view rqt_image_view /tello/image_raw/compressed
+```shell
+rosrun rqt_image_view rqt_image_view /tello/image_raw/compressed
+```
