@@ -54,6 +54,14 @@ source /home/user/rUBot_drone_ws/devel/setup.bash
 
 Your computer is ready for simulation
 
+**Cloning from Drone Project**
+
+You can clone the project from my github: https://github.com/manelpuig/rUBot_drone_ws
+
+The you need to follow the instructions without the cloning the packages.
+
+>If you are working on ROS environment "TheConstruct" an error will occur on installation of h264_image_transport. This will only afect the real visualization of the drone images, but all the simulation will work.
+
 ### **1.2. Launching the simulation**
 
 Now that you have everything in place, you should be able to launch the simulation with the command below (in function of the ws you have cloned):
