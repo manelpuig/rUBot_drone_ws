@@ -47,6 +47,10 @@ export CXXFLAGS=-isystem\ /usr/include/ignition/math4
 source /opt/ros/noetic/setup.bash
 catkin_make
 ```
+You have to add to the .bashrc file:
+```shell
+source /home/user/rUBot_drone_ws/devel/setup.bash
+```
 
 Your computer is ready for simulation
 
@@ -65,12 +69,7 @@ With the simulation running, you should now be able to make the robot take off, 
 rostopic pub /drone/takeoff std_msgs/Empty "{}"
 rostopic pub /drone/land std_msgs/Empty "{}"
 ```
-To control the Parrot type:
-```shell
-rostopic pub /drone/takeoff std_msgs/Empty "{}"
-rosrun custom_teleop teleop_twist_keyboard.py
-rostopic pub /drone/land std_msgs/Empty "{}"
-```
+
 To properly close the gazebo, open a new terminal and type:
 ```shell
 pkill gzserver && pkill gzclient
