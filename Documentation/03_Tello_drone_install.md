@@ -7,7 +7,7 @@ https://www.youtube.com/watch?v=uMiXP_AwhmM
 
 The detailed install instructions are:
 ```shell
-cd rUBot_drone_ws
+cd rUBot_drone_ws/src
 git clone https://github.com/anqixu/TelloPy.git
 cd TelloPy
 sudo apt install python3-pip
