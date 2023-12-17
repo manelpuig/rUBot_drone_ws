@@ -1,7 +1,7 @@
 # **Tello Drone Control**
 
 Follow instructions in:
-- Let’s bringup the Parrot AR-Drone
+- Let’s bringup the Tello Drone
 ```shell
 roslaunch tello_driver tello_node.launch
 ```

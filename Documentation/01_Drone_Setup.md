@@ -58,9 +58,9 @@ Your computer is ready for simulation
 
 You can clone the project from my github: https://github.com/manelpuig/rUBot_drone_ws
 
-The you need to follow the instructions without the cloning the packages.
+Then you need to follow the instructions without the cloning the packages.
 
->If you are working on ROS environment "TheConstruct" an error will occur on installation of h264_image_transport. This will only afect the real visualization of the drone images, but all the simulation will work.
+>During compilation some errors will occur. This is due to the Tello packages that will need some installation before compilation. This will be done on the corresponding document for Tello drone demonstration.
 
 ### **1.2. Launching the simulation**
 

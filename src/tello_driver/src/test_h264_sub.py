@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 import rospy
 from h264_image_transport.msg import H264Packet

@@ -22,6 +22,12 @@ catkin_make
 ```
  You will only need to open file "tello_driver_node.py" and change to python3 on the first line
 
+**Cloning from Drone Project**
+
+You can clone the project from my github: https://github.com/manelpuig/rUBot_drone_ws
+
+Then you need to follow the instructions without the cloning the packages.
+
 # **Tello drone device registering**
 
 First time you have to register your Tello drone device:
