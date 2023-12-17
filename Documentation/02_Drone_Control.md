@@ -121,11 +121,11 @@ rostopic pub /cmd_vel geometry_msgs/Twist '[0, 0, 1]' '[0, 0, 0]'
 
 ## **4. Creating some trajectories**
 
-You are now ready to start creating some simple trajectories for it. For instance, you can create a service that, when called, makes your drone execute one of the following three predefined trajectories: circle, square, or triangle.
+You are now ready to start creating some simple trajectories for it. For instance, you can create a package for your drone to execute circle or square trajectory.
 
 For that, you will have to do the following:
 
-- Create a "drone_demo" package" to perform different trajectories.
+- Create a "drone_control" package" to perform different trajectories.
 - In the src folder create square_move.py file to perform a square trajectory.
 
 Test the square movement:
@@ -136,9 +136,5 @@ rosrun drone_control square_move.py
 ```
 
 **Exercise**
-Modify the previous square_move demo exemple to perform:
+Modify the previous square_move demo exemple to perform circle movement
 
-- triangular movement
-- circle movement
-
-This can be done creating a service

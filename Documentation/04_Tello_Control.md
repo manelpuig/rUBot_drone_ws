@@ -47,7 +47,7 @@ rostopic pub /tello/cmd_vel geometry_msgs/Twist '[0, 0, 0]' '[0, 0, 0]'
 - Finally, in order to land the drone again, you will have to publish an empty message to the /tello/land topic.
 
 ```shell
-rostopic pub /tello/drone/land std_msgs/Empty "{}"
+rostopic pub /tello/land std_msgs/Empty "{}"
 ```
 
 ## **2. Moving the Tello robot with the keyboard**
@@ -56,31 +56,16 @@ Fortunately, there is a very good ROS program that allows us to control the move
 
 For that purpose you have to:
 
-- install "teleop-twirst-keyboard" package or clone this package in your workspace:
-
-```shell
-apt install ros-noetic-teleop-twist-keyboard
-```
-
-- Now, you can execute the program by running the next command:
-
-```shell
-rosrun teleop_twist_keyboard teleop_twist_keyboard.py
-```
-**Custom Teleop**
-
-You can now control the drone using your keyboard, as you did in the demo unit. It's quite annoying to have to manually take off and land the drone each time you want to teleoperate it, don't you think? Let's modify it then!
-
-- We have created the "custom_teleop" package in src folder. We have modified some things in the "teleop_twist_keyboard.py" code.
-- At the beginning of the file, import the Empty message. (line 6)
-- Next, create two new Publishers, one for landing and the other one for taking off. And create an instance of the Empty message. (lines 84-85)
-- Finally, just add two conditions for the new keys. (lines 113-115)
+- Custom the 3 Publishers to the corresponding tello topics:
+    - /tello/cmd_vel
+    - /tello/takeoff
+    - /tello/land 
 
 Great! So, now you can run the script again and try the new keys you have set up for taking off and landing the drone!
 
 ```shell
-roslaunch ar_drone simple.launch
-rosrun custom_teleop teleop_twist_keyboard.py
+roslaunch tello_driver tello_node.launch
+rosrun drone_control tello_teleop_twist_keyboard.py
 ```
 
 You can perform "takeoff" with key "1" and "landing" with key "2"
@@ -97,49 +82,46 @@ It will be better if you see how this works in an exemple:
 - First of all, you will need to take off the drone as usual. The drone will takeoff.
 
 ```shell
-rostopic pub /drone/takeoff std_msgs/Empty "{}"
+rostopic pub /tello/takeoff std_msgs/Empty "{}"
 ```
 
 - Now, you will need to switch the position control mode on. For that, you need to publish into the /drone_posctrl topic. This topic uses the std_msgs/Bool type of message. When you publish the message "true" into the topic, the position mode will be activated. Type in another terminal:
 
 ```shell
-rostopic pub /drone/posctrl std_msgs/Bool "data: true"
+rostopic pub /tello/posctrl std_msgs/Bool "data: true"
 ```
 
 - You can now start sending coordinates to the drone. To use this mode, you have to publish to the /cmd_vel topic, just as you were doing up until now. But in this case, you will be sending coordinates instead of velocities. These coordinates will be placed in the linear velocities vector. For instance, if we send (1,0,2) message in /cmd_vel topic, we are ordering the drone to move 1m in x direction and move up 1 meter on the z axis.
 
 ```shell
-rostopic pub /cmd_vel geometry_msgs/Twist '[2, 0, 1]' '[0, 0, 0]'
+rostopic pub /tello/cmd_vel geometry_msgs/Twist '[2, 0, 1]' '[0, 0, 0]'
 ```
 
 - You can go back to the velocity mode by publishing a message to the /drone/vel_mode topic with the data variable as true. Type in different terminals:
 
 ```shell
-rostopic pub /drone/posctrl std_msgs/Bool "data: false"
-rostopic pub /drone/vel_mode std_msgs/Bool "data: true"
-rostopic pub /cmd_vel geometry_msgs/Twist '[0, 0, 1]' '[0, 0, 0]'
+rostopic pub /tello/posctrl std_msgs/Bool "data: false"
+rostopic pub /tello/vel_mode std_msgs/Bool "data: true"
+rostopic pub /tello/cmd_vel geometry_msgs/Twist '[0, 0, 1]' '[0, 0, 0]'
 ```
 
 ## **4. Creating some trajectories**
 
-You are now ready to start creating some simple trajectories for it. For instance, you can create a service that, when called, makes your drone execute one of the following three predefined trajectories: circle, square, or triangle.
+You are now ready to start creating some simple trajectories for it. For instance, you can create a package for your drone to execute circle or square trajectory.
 
 For that, you will have to do the following:
 
-- Create a "drone_demo" package" to perform different trajectories.
+- Create a "drone_control" package" to perform different trajectories.
 - In the src folder create square_move.py file to perform a square trajectory.
 
 Test the square movement:
 
 ```shell
-roslaunch ar_drone simple.launch
-rosrun drone_control square_move.py
+roslaunch tello_driver tello_node.launch
+rosrun drone_control tello_square_move.py
 ```
 
 **Exercise**
-Modify the previous square_move demo exemple to perform:
+Modify the previous square_move demo exemple to perform circle movement
 
-- triangular movement
-- circle movement
 
-This can be done creating a service
