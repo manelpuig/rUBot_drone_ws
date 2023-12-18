@@ -52,7 +52,7 @@ roslaunch tello_driver tello_node.launch
 - Open 2 new terminals and type for take off and landing
 ```shell
 rostopic pub /tello/takeoff std_msgs/Empty "{}"
-rostopic pub /tello/land std_msgs/Empty "{}
+rostopic pub /tello/land std_msgs/Empty "{}"
 ```
 
 To see the camera:

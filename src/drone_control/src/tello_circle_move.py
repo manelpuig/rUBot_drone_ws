@@ -67,7 +67,7 @@ class MoveCircleClass(object):
         i += 1
     
     # define the seconds to move 
-    turnSeconds = 14
+    turnSeconds = 4
     
     # Logic that makes the robot move forward and turn
     self.turn_drone()
