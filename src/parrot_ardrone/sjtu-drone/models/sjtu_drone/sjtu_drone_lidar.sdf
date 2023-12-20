@@ -160,7 +160,7 @@
 
 	<!-- LIDAR -->
   <sensor type="ray" name="laser">
-    <pose>0 0 0.3 0 0 1.57</pose>
+    <pose>0 0 0.1 0 0 1.57</pose>
     <visualize>true</visualize>
     <update_rate>10</update_rate>
     <ray>
@@ -186,6 +186,7 @@
     <plugin name="hokuyo_node" filename="libgazebo_ros_laser.so">
       <robotNamespace></robotNamespace>
       <topicName>/drone/scan</topicName>
+      <frameName>base_link</frameName>
     </plugin>
   </sensor>
 
